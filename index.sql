@@ -17,7 +17,9 @@ CREATE TABLE posts(
 
 CREATE TABLE comments(
   id serial PRIMARY KEY,
+  author integer REFERENCES users,
   post integer REFERENCES posts,
+  comment text
 )
 
 CREATE TABLE tags(
