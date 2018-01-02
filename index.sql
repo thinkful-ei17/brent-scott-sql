@@ -8,21 +8,25 @@ CREATE TABLE users(
 
 CREATE TABLE posts(
   id serial PRIMARY KEY,
-  author integer REFERENCES users ON DELETE CASCADE,
-  title text,
-  content text,
-  published TIMESTAMP WITH TIME ZONE
-  
+  author integer REFERENCES users,
+  title text NOT NULL,
+  content text NOT NULL,
+  published TIMESTAMP WITH TIME ZONE 
 )
 
 CREATE TABLE comments(
   id serial PRIMARY KEY,
   author integer REFERENCES users,
   post integer REFERENCES posts,
-  comment text
+  comment text NOT NULL
 )
 
 CREATE TABLE tags(
   id serial PRIMARY KEY,
-  post integer REFERENCES posts,
+  category text NOT NULL,
+)
+
+CREATE TABLE post_tags (
+  post_id integer REFERENCES posts,
+  tag_id integer REFERENCES tags
 )
