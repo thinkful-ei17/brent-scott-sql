@@ -46,4 +46,9 @@ INSERT INTO posts
     (1, 'Grapes are good', 'or are they... sometimes grapes are bad'),
     (3, 'Plums are the best', 'enough said.');
 
-
+INSERT INTO comments 
+(author, post, reply, comment) VALUES
+  (3,1, null, 'first!'),
+  (1,2, null, 'You are wrong'),
+  (2,3, null, 'Plums taste like dirt'),
+  (1,1,1,'second!');
