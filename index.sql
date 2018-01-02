@@ -3,7 +3,7 @@ CREATE TABLE users(
   first_name text,
   last_name text,
   email_address text NOT NULL,
-  screen_name text NOT NULL
+  screen_name text NOT NULL UNIQUE
 );
 
 CREATE TABLE posts(
@@ -35,7 +35,15 @@ CREATE TABLE post_tags (
 
 
 INSERT INTO users 
-  (first_name,last_name,email_address,screen_name) VALUES 
-    ("Brent", "Guistwite", "notshowingyoumyemail@gmail.com","sk8rboi"),
-    ("Scott", "Tribble", "notshowingyoumyemail@gmail.com","sk8rboi"),;
-    ("Tudor", "Illisoi", "notshowingyoumyemail@gmail.com","sk8rboi"),
+  (first_name, last_name, email_address, screen_name) VALUES 
+    ('Brent', 'Guistwite', 'notshowingyoumyemail@gmail.com','sk8rboi'),
+    ('Scott', 'Tribble', 'notshowingyoumyemail@gmail.com','sk8rGrl'),
+    ('Tudor', 'Ilisoi', 'notshowingyoumyemail@gmail.com','tutor');
+
+INSERT INTO posts
+  (author, title, content) VALUES
+    (2, 'Grapes are bad', 'or are they... sometimes grapes are good'),
+    (1, 'Grapes are good', 'or are they... sometimes grapes are bad'),
+    (3, 'Plums are the best', 'enough said.');
+
+
