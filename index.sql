@@ -8,25 +8,28 @@ CREATE TABLE users(
 
 CREATE TABLE posts(
   id serial PRIMARY KEY,
-  author integer REFERENCES users,
+  author integer NOT NULL REFERENCES users,
   title text NOT NULL,
   content text NOT NULL,
-  published TIMESTAMP WITH TIME ZONE 
+  published TIMESTAMP WITH TIME ZONE NOT NULL default now()
 )
 
 CREATE TABLE comments(
   id serial PRIMARY KEY,
-  author integer REFERENCES users,
-  post integer REFERENCES posts,
+  author integer NOT NULL REFERENCES users,
+  post integer NOT NULL REFERENCES posts,
+  reply integer REFERENCES comments,
   comment text NOT NULL
+  
 )
 
 CREATE TABLE tags(
   id serial PRIMARY KEY,
-  category text NOT NULL,
+  category text NOT NULL
 )
 
 CREATE TABLE post_tags (
-  post_id integer REFERENCES posts,
-  tag_id integer REFERENCES tags
+  post_id integer NOT NULL REFERENCES posts,
+  tag_id integer NOT NULL REFERENCES tags
 )
+
